@@ -34,8 +34,8 @@ public class Acapites {
     public void URLinput() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Introduzca URL valida");
-        //this.url = scanner.nextLine();
-        this.url = "https://www.pucmm.edu.do";
+        this.url = scanner.nextLine(); //variable para guardar info de URL
+        // this.url = "https://www.pucmm.edu.do";
         try {
             this.document = Jsoup.connect(url).get();
         } catch (IOException e) {
@@ -53,12 +53,12 @@ public class Acapites {
         System.out.println("Total de parrafos: " + document.getElementsByTag("p").size());
     }
 
-   // c) Indicar la cantidad de imágenes (img) dentro de los párrafos que contiene el archivo HTML.
+    // c) Indicar la cantidad de imágenes (img) dentro de los párrafos que contiene el archivo HTML.
     private void puntoC() {
         int count = 0;
 
-        for(Element element : document.getElementsByTag("p")) {
-            for(Element element2 : element.getElementsByTag("img")) {
+        for (Element element : document.getElementsByTag("p")) {
+            for (Element element2 : element.getElementsByTag("img")) {
                 count++;
             }
         }
@@ -71,61 +71,65 @@ public class Acapites {
         int cantPost = 0;
         int cantGet = 0;
 
-        for(Element element : document.getElementsByTag("form")) {
-            for(Element element2 : document.getElementsByAttributeValue("method", "get")) {
+        for (Element element : document.getElementsByTag("form")) {
+            for (Element element2 : element.getElementsByAttributeValue("method", "get")) {
                 cantGet++;
             }
-
-            for(Element element2 : document.getElementsByAttributeValue("method", "post")) {
-                cantPost++;
-            }
         }
 
-        System.out.println("Total de formularios 'POST': " + cantPost);
-        System.out.println("Total de formularios 'GET': " + cantGet);
-    }
+            for (Element element1 : document.getElementsByTag("form")) {
+                for (Element element3 : element1.getElementsByAttributeValue("method", "post")) {
+                    cantPost++;
 
-    //e) Para cada formulario mostrar los campos del tipo input y su
-    //respectivo tipo que contiene en el documento HTML.
-    private void puntoE() {
-        for (Element element : document.getElementsByTag("form")) {
-            System.out.println(element);
-        }
-    }
-
-
-    //Para cada formulario parseado, identificar que el metodo de envío
-    //del formulario sea por utilizando el método POST y enviar una
-    //petición al servidor, con el parámetro llamado asignatura y valor
-    //practica1 y mostrar la respuesta por la salida estandar.
-    private void puntoF() {
-        Connection.Response response = null;
-        Document doc = null;
-        Map<String, String> parametros = new HashMap<>();
-
-        try {
-            for (Element element : document.getElementsByTag("form")) {
-                String absURL = element.absUrl("action");
-
-                if (element.attr("method").equals("post")) {
-                    parametros.put("asignatura", "practica1");
-
-                    doc = Jsoup.connect(absURL)
-                            .header("matricula", "20130940")
-                            .method(Connection.Method.POST)
-                            .data(parametros)
-                            .post();
-
-                    System.out.println(doc.outerHtml());
                 }
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+
+            System.out.println("Total de formularios 'POST': " + cantPost);
+            System.out.println("Total de formularios 'GET': " + cantGet);
+        }
+
+        //e) Para cada formulario mostrar los campos del tipo input y su
+        //respectivo tipo que contiene en el documento HTML.
+
+        private void puntoE() {
+            for (Element element : document.getElementsByTag("form")) {
+                System.out.println(element);
+            }
+        }
+
+
+        //Para cada formulario parseado, identificar que el metodo de envío
+        //del formulario sea por utilizando el método POST y enviar una
+        //petición al servidor, con el parámetro llamado asignatura y valor
+        //practica1 y mostrar la respuesta por la salida estandar.
+        private void puntoF() {
+            Connection.Response response = null;
+            Document doc = null;
+            Map<String, String> parametros = new HashMap<>();
+
+            try {
+                for (Element element : document.getElementsByTag("form")) {
+                    String absURL = element.absUrl("action");
+
+                    if (element.attr("method").equals("post")) {
+                        parametros.put("asignatura", "practica1");
+
+                        doc = Jsoup.connect(absURL)
+                                .header("matricula", "20130940")
+                                .method(Connection.Method.POST)
+                                .data(parametros)
+                                .post();
+
+                        System.out.println(doc.outerHtml());
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        //Metodo para visualizar el contenido del documento en html
+        private void viewHtml() {
+            System.out.println(document.html().toString());
         }
     }
-
-    //Metodo para visualizar el contenido del documento en html
-    private void viewHtml() {
-        System.out.println(document.html().toString());
-    }
-}
