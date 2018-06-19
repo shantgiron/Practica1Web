@@ -1,2 +1,5 @@
-https://medium.com/@surmenok/chatbot-architecture-496f5bf820ed
-https://www.slideshare.net/RubenRodriguezSantia/chatbots-best-practices-design-patterns
+Questions for sam:
+Just to be clear, are we going to take the "test" page just to modify or edit the "blog" page based on the Economics template?
+Once we are editing the test template, can we modify the CSS file or this one is the same implemented on the pages that are on production?
+What would be better for us to choose, hubspot or work directly with crownpeak?
+After we finish editing the test template, we are just going to apply that template to the blog page or what?
