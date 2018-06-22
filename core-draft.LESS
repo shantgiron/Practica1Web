@@ -1,0 +1,246 @@
+/**
+ * FA Web Core
+ * Developed by Sam Hooker for exclusive use by First American Financial Corporation.
+ * Copyright 2015. All rights reserved.
+ */
+
+/**
+ * A Note Regarding Images:
+ * To compile properly, image paths are set up to be relative to the main stylesheet that imports this file.
+ */
+
+
+ //Imports 
+
+
+ @import 'http://stage.firstam.com/assets/hubspot/FirstamBlog2018/Core/core-font.css';
+
+// Variables --------------------
+
+	@ver: "../lib/core/1.6";
+	@verImg: "@{ver}/img";
+
+// Measurements --------------------
+
+	@dockWidth:260px;
+
+	@largewidth:934px; // 960 trimmed
+
+	@medmax:959px;
+	@medwidth:738px; // 768 trimmed
+
+	@smallmax:767px;
+	@smallwidth:460px; // 480 trimmed
+
+	@xsmallmax:479px;
+	@xsmallwidth:300px; //320 trimmed
+
+	@rad:5px;
+
+	@gutter:40px;
+
+	@half-gutter:42px;
+	@third-gutter:41px;
+	@fourth-gutter:42px;
+	@fifth-gutter:41px;
+	@sixth-gutter:38px;
+
+	@colpad:20px;
+
+	@cnBarHeight:40px;
+
+// Colors --------------------
+
+	@black:#000;
+	@white:#fff;
+	@offWhite:#ebebeb;
+	@brightOffWhite:#f4f4f4;
+	@lineGrey:#c2c2c2;
+	@textGrey:#464646;
+	@FABlueFooter: #b3c4d4;
+	@FAblue:#013a6f;
+	@FAred:#e62e1f;
+	@FAyellow:#fccf45;
+	@FAlinkblue: #3574e3;
+	@secBlue:#32608a;
+	@bodycolor: #444;
+
+//Selectors ------------------
+	//header
+	@header-wrapper: header-container-wrapper;
+	@body-wrapper: body-container-wrapper;
+	@footer-wrapper: footer-container-wrapper;
+	@containerF: container-fluid;	
+	@row-wrapper: row-fluid-wrapper;
+	@row: row-fluid;
+	@cell-wrapper: cell-wrapper-layout-widget-wrapper;
+	@body-bg: body-background-container;
+	
+
+
+//Typografy ------------------
+
+	.font-light {font-weight:100;}
+	.font-book {font-weight:300;}
+	.font-medium {font-weight:400;}
+	.font-heavy {font-weight:700;}
+	.font-black {font-weight:900;}
+
+//Heading  -------------------
+
+	h1, h2, h3, h4, h5, h6,
+	.h1, .h2, .h3, .h4, .h5, .h6 { .avenir; margin:20px 0 15px; line-height:1.2em; color:@FAblue; .font-medium;}
+
+	h1, .h1 {font-size:30pt;}
+	h2, .h2 {.font-light; font-size:24pt; line-height: 0.8em; }
+
+	.headline {.font-book; font-size:30pt; line-height:1.1em; margin:20px 0 40px;}
+
+	h3, .h3 {font-size:18pt;}
+	h4, .h4 {font-size:16pt;}
+	h5, .h5 {font-size:14.5pt;}
+	h6, .h6 {font-size:13.5pt;}
+
+//Paragraph and body text --------
+	
+	.blog-body { .avenir;font-size: 13px; line-height: 18px; color: @bodycolor;}
+	body, p { .blog-body; }
+	
+
+
+// a -------------------------
+
+	a { color: @FAlinkblue; .avenir;}
+	body a, h2 a{ text-decoration: none;}
+	h2 a{ font-size: 22px; color: @FAlinkblue; line-height: 0.9em; font-weight: bold;}
+
+//Mixins ---------------------
+	.avenir {font-family: Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif;}
+	.outer-block {width:100%; min-width:@largewidth;}
+	.inner-block {max-width:@largewidth; margin:0 auto;}
+	body.alt-bg-sections {
+	section:nth-child(even) {background-color:@offWhite;}}
+
+//Structure ------------------
+
+	
+	//.@{containerF} {
+	//	.cf; .inner-block;}
+	
+	//	.cf {*zoom:1;
+	//	&:before, &:after {content:" "; display:table;}
+	//	&:after {clear:both;}
+	//		}
+
+//Header ---------------------
+	.@{header-wrapper} { background:  url(http://stage.firstam.com/assets/hubspot/FirstamBlog2018/Core/img/background-1-blog.jpg) repeat; margin-top: 12px;} 
+ 
+	.@{cell-wrapper} { margin-bottom: 10px; text-align: center; }
+
+	
+	//.@{row} { width: 100%;  margin-top: 12px; }		
+
+	#hs-search-module label {
+		display: none;
+	}
+
+	hs-button.primary{
+		font-weight: bold;
+		text-align: center;
+		text-decoration: none;
+		width: auto;
+		height: auto;
+		font-family: Helvetica,Trebuchet MS,sans-serif ;
+		border-radius: 4px;
+		background-color: #0074cc;
+		background-image: -webkit-linear-gradient(top,#0074cc,#005799);
+
+	}
+
+	.hs-search-field__input{
+		
+		height: 12px;
+		background: #fff;
+		border-color: #ccc;
+		color: #555;
+		font-family: Helvetica,Trebuchet MS,sans-serif;
+		width: 175px;
+		float: left;
+		height: 26px;
+	}
+
+	#hs-search-module div.input input.hs-input {
+		width: 175px;
+		float: left;
+		height: 26px;
+	}
+
+
+	
+	#main-header-right {
+		margin-top: 12px;
+	}
+
+
+	
+
+//Body-----------------------
+	body { margin: 0px; }
+	.@{body-wrapper} {padding-top: 40px; background: #ffffff url(https://www.firstam.com/assets/images/econ-blog/background-1-blog.jpg) top center repeat-x}
+
+.blogname {
+    color: #fff;
+    font-weight: 300;
+    font-size: 3em;
+}
+.container-fluid{ max-width: 970px; }
+
+
+
+
+
+//Body-----------------------
+
+//Blog Layout ---------------
+	.blogname {color: @white; .font-book; font-size: 3em; margin: 20px; }
+	.hs-featured-image {max-width:100%; max-height:400px; width: auto; height: auto;}
+	.main-blog-content { background-color: @white; padding: 20px; margin-top: 40px;}
+	.post-item { margin-top: 30px; height: 700px; }
+
+	
+//Footer --------------------
+
+	//#footer{ .outer-block; background-color: @FABlueFooter;	text-align: justify}
+	//.footer-col{ float: left;}
+	//.five-col{ .inner-block;}
+	//.inner-block {
+//		width: 934px;
+//		margin: 0 auto;
+//	}
+
+	.five-col .one-fifth, .five-col .one-sixth {
+		margin-left: 41px;
+	}
+
+	.one-fifth {
+		width: 154px;
+	}
+
+	.social {
+		float: left;
+		height: 23px;
+		width: 23px;
+		margin-right: 1em;
+		background-image: url(/assets/faf/img/sprite-social-icons.gif);
+
+	}
+
+	#footer-cols {
+		margin-bottom: 20px;
+	}
+
+
+
+
+
+//Breakpoints --------------- 
